@@ -1,5 +1,9 @@
 """
 https://www.52txr.cn/2022/metricslossacc.html    代码来源  可以跟着flow\tensorflow_learning\Basics\tutorial3-neuralnetwork.py比较着看
+
+
+https://www.youtube.com/watch?v=w8yWXqWQYmU    Building a neural network FROM SCRATCH (no Tensorflow/Pytorch, just numpy & math)
+https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras/notebook  code
 """
 
 
@@ -50,8 +54,28 @@ model = tf.keras.Sequential([
 ])
 
 print (model.summary())
-import sys
-sys.exit()
+
+""" 
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d (Conv2D)              (None, None, None, 16)    160
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, None, None, 32)    4640
+_________________________________________________________________
+global_max_pooling2d (Global (None, 32)                0
+_________________________________________________________________
+dense (Dense)                (None, 10)                330
+=================================================================
+Total params: 5,130
+Trainable params: 5,130
+Non-trainable params: 0
+_________________________________________________________________
+"""
+
+# import sys
+# sys.exit()
 
 
 """ 
