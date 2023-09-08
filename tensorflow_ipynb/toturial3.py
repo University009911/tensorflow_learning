@@ -49,6 +49,10 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(10)
 ])
 
+print (model.summary())
+import sys
+sys.exit()
+
 
 """ 
 这段代码定义了一个使用卷积神经网络（CNN）架构的 Keras 模型。
@@ -70,7 +74,7 @@ train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy('train_accuracy')
 #定义了两个tf.keras.metrics，分别是train_loss和train_accuracy。这两个指标用于记录训练过程中的损失和准确率。
 
 
-#定义了一个train_step函数，用于执行训练的单个步骤。该函数使用tf.GradientTape计算损失函数的梯度，并使用optimizer优化器更新模型的参数
+ 
 def train_step(model,images,labels):
     with tf.GradientTape() as t:
         pred = model(images)

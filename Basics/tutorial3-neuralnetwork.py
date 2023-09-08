@@ -1,4 +1,5 @@
 import os
+import sys
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
@@ -64,20 +65,60 @@ model = keras.Sequential(
     ]
 )
 
+print(model.summary())     #打印model的summary
+
+""" 
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+dense (Dense)                (None, 512)               401920
+_________________________________________________________________
+dense_1 (Dense)              (None, 256)               131328
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                2570
+================================================================= 
+"""
+
+
+
+
 model = keras.Sequential()
 model.add(keras.Input(shape=(784)))
 model.add(layers.Dense(512, activation="relu"))
 model.add(layers.Dense(256, activation="relu", name="my_layer"))
 model.add(layers.Dense(10))
 
+
+print(model.summary())     #打印model的summary
+
+""" 
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+dense_3 (Dense)              (None, 512)               401920
+_________________________________________________________________
+my_layer (Dense)             (None, 256)               131328
+_________________________________________________________________
+dense_4 (Dense)              (None, 10)                2570
+=================================================================
+Total params: 535,818
+Trainable params: 535,818
+Non-trainable params: 0
+_________________________________________________________________
+ """
+
+# sys.exit()
+
 # Functional API (A bit more flexible)
 inputs = keras.Input(shape=(784))
-x = layers.Dense(512, activation="relu", name="first_layer")(inputs)
+x = layers.Dense(512, activation="relu", name="first_layer")(inputs)     #这一层有512个节点
 x = layers.Dense(256, activation="relu", name="second_layer")(x)
 outputs = layers.Dense(10, activation="softmax")(x)
 model = keras.Model(inputs=inputs, outputs=outputs)
 
-model.compile(
+model.compile( 
     loss=keras.losses.SparseCategoricalCrossentropy(from_logits=False),
     optimizer=keras.optimizers.Adam(lr=0.001),
     metrics=["accuracy"],
