@@ -16,15 +16,19 @@ def pp():
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 # x_train里面每一个element都是二维数组
-print (x_train[5])
-print(len(x_train[5]))
+print(f"x_train[5]的输出是{x_train[5]}")  #输出第五个元素
+print(f"x_train[5]的长度是{len(x_train[5])}")    #x_train[5]的长度是28
+
 pp()
+
 x_train = x_train.reshape(-1, 28 * 28).astype("float32") / 255.0
 x_test = x_test.reshape(-1, 28 * 28).astype("float32") / 255.0
-
-print(x_train.shape)  #(60000, 28, 28, 1)
-print(x_train[0])    #输出第一个element
-print(x_train[0].shape)    #输出第一个element的维度
+print(f"x_train.shape的输出是{x_train.shape}")  #(60000, 28, 28, 1)
+print(f"x_train[5]的输出是{x_train[5]}")  #输出第五个元素
+print(f"x_train[5]的长度是{len(x_train[5])}")    ##输出第五个元素的长度  x_train[5]的长度是784
+print(f"x_train[5].shape是{x_train[5].shape}")    #x_train[5].shape是(784,)
+# import sys
+# sys.exit()
 
 """
 ###/reshape(-1, 28 * 28)解释
