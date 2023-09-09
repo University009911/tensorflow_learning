@@ -128,5 +128,13 @@ model.compile(
     metrics=["accuracy"],
 )
 
+""" 
+这段代码是 Keras 模型的编译代码，用于定义模型的损失函数、优化器和度量指标。具体来说：
+loss=keras.losses.SparseCategoricalCrossentropy(from_logits=False) 指定了模型的损失函数为 SparseCategoricalCrossentropy 损失函数，其中 from_logits=False 表示输入的是未经 softmax 归一化的 logits 而不是概率分布。
+optimizer=keras.optimizers.Adam(lr=0.001) 指定了模型的优化器为 Adam 优化器，其中 lr=0.001 表示学习率为 0.001。
+metrics=["accuracy"] 指定了模型的度量指标为准确率（accuracy）。
+通过使用这些参数，我们可以为模型定义合适的损失函数、优化器和度量指标，以实现最佳的训练效果。在实际应用中，你可以根据具体的任务和数据集选择不同的损失函数、优化器和度量指标。 
+"""
+
 model.fit(x_train, y_train, batch_size=32, epochs=5, verbose=2)   #训练model  60000份数据，每个批次32个，所有数据总共1875份   整个数据集训练5次
 model.evaluate(x_test, y_test, batch_size=32, verbose=2)
