@@ -1,7 +1,6 @@
 """
 https://www.52txr.cn/2022/metricslossacc.html    代码来源  可以跟着flow\tensorflow_learning\Basics\tutorial3-neuralnetwork.py比较着看
 
-
 https://www.youtube.com/watch?v=w8yWXqWQYmU    Building a neural network FROM SCRATCH (no Tensorflow/Pytorch, just numpy & math)
 https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras/notebook  code
 """
