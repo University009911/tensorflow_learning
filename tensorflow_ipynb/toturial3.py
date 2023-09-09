@@ -53,6 +53,19 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(10)
 ])
 
+""" 
+这段代码定义了一个使用卷积神经网络（CNN）架构的 Keras 模型。
+模型的输入是一个三维张量，形状为（None, None, 1），其中 None 表示输入的图像大小可以是任意的。模型的输出是一个十维的向量，表示预测的结果。
+模型由以下几个层组成：
+tf.keras.layers.Conv2D：这是一个卷积层，使用 16 个大小为 3x3 的卷积核，激活函数为 ReLU。
+tf.keras.layers.Conv2D：这是另一个卷积层，使用 32 个大小为 3x3 的卷积核，激活函数为 ReLU。
+tf.keras.layers.GlobalMaxPool2D：这是一个全局最大池化层，用于减少特征图的维数。
+tf.keras.layers.Dense：这是一个全连接层，使用 10 个神经元，用于对特征图进行分类。
+该模型可以用于图像分类任务，例如手写数字识别、图像分类等。
+ """
+
+
+
 print (model.summary())
 
 """ 
@@ -77,17 +90,6 @@ _________________________________________________________________
 # import sys
 # sys.exit()
 
-
-""" 
-这段代码定义了一个使用卷积神经网络（CNN）架构的 Keras 模型。
-模型的输入是一个三维张量，形状为（None, None, 1），其中 None 表示输入的图像大小可以是任意的。模型的输出是一个十维的向量，表示预测的结果。
-模型由以下几个层组成：
-tf.keras.layers.Conv2D：这是一个卷积层，使用 16 个大小为 3x3 的卷积核，激活函数为 ReLU。
-tf.keras.layers.Conv2D：这是另一个卷积层，使用 32 个大小为 3x3 的卷积核，激活函数为 ReLU。
-tf.keras.layers.GlobalMaxPool2D：这是一个全局最大池化层，用于减少特征图的维数。
-tf.keras.layers.Dense：这是一个全连接层，使用 10 个神经元，用于对特征图进行分类。
-该模型可以用于图像分类任务，例如手写数字识别、图像分类等。
- """
 
 optimizer = tf.keras.optimizers.Adam()   # 优化器，默认Adam参数
 
