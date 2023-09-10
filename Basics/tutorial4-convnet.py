@@ -16,12 +16,12 @@ x_test = x_test.astype("float32") / 255.0
 
 model = keras.Sequential(
     [
-        keras.Input(shape=(32, 32, 3)),        #输入数据是32*32的矩阵   是三维的  总共三个特征图
-        layers.Conv2D(32, 3, padding="valid", activation="relu"),    #用32个  3*3的卷积核进行运算   算完总共32个特征图  每个特征图是三维的
-        layers.MaxPooling2D(),
-        layers.Conv2D(64, 3, activation="relu"),
-        layers.MaxPooling2D(),
-        layers.Conv2D(128, 3, activation="relu"),
+        keras.Input(shape=(32, 32, 3)),        #输入数据是32*32的矩阵   是三维的  总共一个特征图
+        layers.Conv2D(32, 3, padding="valid", activation="relu"),    #用32个  3*3的卷积核进行运算(三维的3*3卷积核)   算完总共32个特征图  每个特征图是三维的 矩阵大小是 （32—3+1）*（32—3+1）*32
+        layers.MaxPooling2D(),   #(None, 15, 15, 32)  
+        layers.Conv2D(64, 3, activation="relu"),    #(None, 13, 13, 64) 
+        layers.MaxPooling2D(),   #(None, 6, 6, 64)
+        layers.Conv2D(128, 3, activation="relu"),    #(None, 4, 4, 128)
         layers.Flatten(),
         layers.Dense(64, activation="relu"),
         layers.Dense(10),
@@ -29,6 +29,41 @@ model = keras.Sequential(
 )
 
 print (model.summary())
+
+#https://www.toutiao.com/video/6937948172207522307/?from_scene=all&log_from=8fbd88f697a26_1694313082086
+#李永乐老师讲解卷积核   第十四分钟开始
+
+
+
+""" 
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d (Conv2D)              (None, 30, 30, 32)        896
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 15, 15, 32)        0
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 13, 13, 64)        18496
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 6, 6, 64)          0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 4, 4, 128)         73856
+_________________________________________________________________
+flatten (Flatten)            (None, 2048)              0
+_________________________________________________________________
+dense (Dense)                (None, 64)                131136
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                650
+=================================================================
+Total params: 225,034
+Trainable params: 225,034
+Non-trainable params: 0
+_________________________________________________________________
+ """
+
+
+
 
 import sys
 sys.exit()
