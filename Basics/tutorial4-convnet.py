@@ -16,8 +16,8 @@ x_test = x_test.astype("float32") / 255.0
 
 model = keras.Sequential(
     [
-        keras.Input(shape=(32, 32, 3)),
-        layers.Conv2D(32, 3, padding="valid", activation="relu"),
+        keras.Input(shape=(32, 32, 3)),        #输入数据是32*32的矩阵   是三维的  总共三个特征图
+        layers.Conv2D(32, 3, padding="valid", activation="relu"),    #用32个  3*3的卷积核进行运算   算完总共32个特征图  每个特征图是三维的
         layers.MaxPooling2D(),
         layers.Conv2D(64, 3, activation="relu"),
         layers.MaxPooling2D(),
