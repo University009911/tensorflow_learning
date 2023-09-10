@@ -128,6 +128,7 @@ model.compile(
     metrics=["accuracy"],
 )
 
+
 """ 
 这段代码是 Keras 模型的编译代码，用于定义模型的损失函数、优化器和度量指标。具体来说：
 loss=keras.losses.SparseCategoricalCrossentropy(from_logits=False) 指定了模型的损失函数为 SparseCategoricalCrossentropy 损失函数，其中 from_logits=False 表示输入的是未经 softmax 归一化的 logits 而不是概率分布。
@@ -135,6 +136,17 @@ optimizer=keras.optimizers.Adam(lr=0.001) 指定了模型的优化器为 Adam �
 metrics=["accuracy"] 指定了模型的度量指标为准确率（accuracy）。
 通过使用这些参数，我们可以为模型定义合适的损失函数、优化器和度量指标，以实现最佳的训练效果。在实际应用中，你可以根据具体的任务和数据集选择不同的损失函数、优化器和度量指标。 
 """
+
+
+""" metrics=["accuracy"]是 Keras 模型编译时的一个参数，用于指定模型在训练过程中需要计算的度量（metric）。
+在你的代码中，它指定模型将计算准确率（accuracy）作为度量。在训练模型时，你可以通过调用 model.fit() 或 model.train_on_batch() 
+等方法来训练模型，并在每一轮训练后计算度量。这些度量可以帮助你评估模型的性能，并指导你对模型进行调整。具体来说，metrics=["accuracy"] 
+意味着在每一轮训练后，Keras 将计算模型的准确率，并将其存储在 History 对象中。你可以通过调用model.history.history['accuracy'] 来获取训练过程中
+准确率的变化情况。除了准确率，你还可以指定其他的度量，例如损失函数（loss function）、精确率（Precision）、召回率（Recall）等。这些度量可以帮助
+你更好地评估模型的性能，并根据需要进行调整。
+ """
+
+
 
 model.fit(x_train, y_train, batch_size=32, epochs=5, verbose=2)   #训练model  60000份数据，每个批次32个，所有数据总共1875份   整个数据集训练5次
 model.evaluate(x_test, y_test, batch_size=32, verbose=2)

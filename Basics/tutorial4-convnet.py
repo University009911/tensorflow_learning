@@ -28,7 +28,8 @@ model = keras.Sequential(
     ]
 )
 
-print(model.summary())
+print (model.summary())
+
 import sys
 sys.exit()
 
